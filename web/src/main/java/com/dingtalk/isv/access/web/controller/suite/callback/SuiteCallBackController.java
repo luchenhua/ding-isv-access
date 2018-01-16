@@ -151,6 +151,10 @@ public class SuiteCallBackController{
              //这个逻辑用来验证验证码
              //留给业务自行判断
             bizLogger.info(SuitePushType.CHECK_SUITE_LICENSE_CODE.getKey());
+        }else if(SuitePushType.MARKET_BUY.getKey().equals(eventType)){
+            //微应用的FA渠道扫码可以通过验证码来开通应用
+            //留给业务自行判断
+            bizLogger.info(SuitePushType.MARKET_BUY.getKey());
         }else{
             //当开放平台更新了新的推送类型,为了避免不认识,需要报警出来
             String errLog = LogFormatter.getKVLogData(LogFormatter.LogEvent.END,

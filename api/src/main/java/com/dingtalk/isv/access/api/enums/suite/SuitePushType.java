@@ -20,7 +20,9 @@ public enum  SuitePushType {
     /**校验更改套件时候的url**/
     CHECK_UPDATE_SUITE_URL("check_update_suite_url"),
     /**校验徐陶剑序列号**/
-    CHECK_SUITE_LICENSE_CODE("check_suite_license_code");
+    CHECK_SUITE_LICENSE_CODE("check_suite_license_code"),
+    /**用户购买下单事件**/
+    MARKET_BUY("market_buy");
     private final String key;
 
     SuitePushType(String key){
