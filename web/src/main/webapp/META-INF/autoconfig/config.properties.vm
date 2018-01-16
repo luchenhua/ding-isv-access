@@ -10,3 +10,8 @@ jdbc.params=autoReconnect=true&amp;rewriteBatchedStatements=true&amp;socketTimeo
 system.env=${system_env}
 oapi.environment=${oapi_environment}
 corp.suite.callback=${corp_suite_callback}
+#suit
+suite.aes=${suite_aes}
+suite.token=${suite_token}
+suite.suiteKey=${suite_suiteKey}
+suite.appId=${suite_appId}

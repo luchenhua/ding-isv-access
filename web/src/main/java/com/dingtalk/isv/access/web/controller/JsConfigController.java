@@ -1,5 +1,6 @@
 package com.dingtalk.isv.access.web.controller;
 
+import com.dingtalk.isv.access.api.constant.AccessSuiteConfig;
 import com.dingtalk.isv.access.api.model.CorpAppVO;
 import com.dingtalk.isv.access.api.model.CorpJSAPITicketVO;
 import com.dingtalk.isv.access.api.model.LoginUserVO;
@@ -34,10 +35,12 @@ public class JsConfigController {
     private CorpManageService corpManageService;
     @Resource
     private EmpManageService empManageService;
+    @Resource
+    private AccessSuiteConfig accessSuiteConfig;
     //你的套件suiteKey。这里写死,ISV自己做配置
-    private final String suiteKey= "suitexdhgv7mn5ufoi9ui";
+    private final String suiteKey= accessSuiteConfig.getSuiteKey();
     //你的微应用appid。这里写死,ISV自己做配置
-    private final Long microappAppId = 1949L;
+    private final Long microappAppId = accessSuiteConfig.getAppId();
     /**
      * 测试微应用鉴权
      * @param url

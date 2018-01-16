@@ -45,7 +45,12 @@
         <property name="oapiDomain" value="${oapi.environment}" />
     </bean>
 
-
+    <bean id="accessSuiteConfig" class="com.dingtalk.isv.access.api.constant.AccessSuiteConfig">
+        <property name="aes" value="${suite.aes}" />
+        <property name="token" value="${suite.token}" />
+        <property name="suiteKey" value="${suite.suiteKey}" />
+        <property name="appId" value="${suite.appId}" />
+    </bean>
 
     <bean id="suiteManageService" class="com.dingtalk.isv.access.biz.service.SuiteManageServiceImpl"/>
     <bean id="corpSuiteAuthService" class="com.dingtalk.isv.access.biz.service.CorpSuiteAuthServiceImpl"/>

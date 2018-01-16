@@ -1,5 +1,6 @@
 package com.dingtalk.isv.access.biz.scheduler;
 
+import com.dingtalk.isv.access.api.constant.AccessSuiteConfig;
 import com.dingtalk.isv.access.api.model.SuiteTokenVO;
 import com.dingtalk.isv.access.api.model.UnActiveCorpVO;
 import com.dingtalk.isv.access.api.service.suite.SuiteManageService;
@@ -21,6 +22,8 @@ public class ReAuthFailedCorpJob {
     private ISVRequestHelper isvRequestHelper;
     @Resource
     private SuiteManageService suiteManageService;
+    @Resource
+    private AccessSuiteConfig accessSuiteConfig;
 
     /**
      * 对开通套件微应用失败的授权企业重新开通。
@@ -31,9 +34,9 @@ public class ReAuthFailedCorpJob {
                     "任务开始。。。"
             ));
             //要检测套件,ISV要换成自己的SuiteKey。做成配置项
-            String suiteKey = "suitexdhgv7mn5ufoi9ui";
+            String suiteKey = accessSuiteConfig.getSuiteKey();
             //要检测的微应用APPID。ISV要换成自己的APPID。做成配置项
-            Long appId = 1949L;
+            Long appId = accessSuiteConfig.getAppId();
             ServiceResult<SuiteTokenVO> suiteTokenSr = suiteManageService.getSuiteToken(suiteKey);
             String suiteToken = suiteTokenSr.getResult().getSuiteToken();
             ServiceResult<List<UnActiveCorpVO>> corpListSr = isvRequestHelper.getUnactiveCorp(suiteToken,appId);

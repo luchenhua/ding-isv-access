@@ -24,7 +24,15 @@
 
     <group name="system">
         <!-- 接收企业部门人员或者其他事件变更的地址 -->
-        <property name="corp.suite.callback" defaultValue="http://139.196.215.81:8080/ding-isv-access/suite/corp_callback/" description="运行环境"/>
+        <property name="corp.suite.callback" defaultValue="http://localhost:8080/ding-isv-access/suite/corp_callback/" description="运行环境"/>
+    </group>
+
+    <group name="suit">
+        <!-- 接收企业部门人员或者其他事件变更的地址 -->
+        <property name="suite.aes" defaultValue="aes_test" description="运行环境"/>
+        <property name="suite.token" defaultValue="token_test" description="运行环境"/>
+        <property name="suite.suiteKey" defaultValue="suite_key_test" description="运行环境"/>
+        <property name="suite.appId" defaultValue="app_id_test" description="运行环境"/>
     </group>
 
     <script>
