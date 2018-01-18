@@ -37,10 +37,7 @@ public class JsConfigController {
     private EmpManageService empManageService;
     @Resource
     private AccessSuiteConfig accessSuiteConfig;
-    //你的套件suiteKey。这里写死,ISV自己做配置
-    private final String suiteKey= accessSuiteConfig.getSuiteKey();
-    //你的微应用appid。这里写死,ISV自己做配置
-    private final Long microappAppId = accessSuiteConfig.getAppId();
+
     /**
      * 测试微应用鉴权
      * @param url
@@ -54,6 +51,11 @@ public class JsConfigController {
 
     ) {
         try{
+            //你的套件suiteKey，配置文件
+            String suiteKey = accessSuiteConfig.getSuiteKey();
+            //你的微应用appid，配置文件
+            Long microappAppId = accessSuiteConfig.getAppId();
+
             bizLogger.info(LogFormatter.getKVLogData(LogFormatter.LogEvent.START,
                     "get_js_config",
                     LogFormatter.KeyValue.getNew("url", url),
@@ -97,6 +99,11 @@ public class JsConfigController {
                                             @RequestParam(value = "corpId", required = false) String corpId,
                                             @RequestParam(value = "code", required = false) String code) {
         try{
+            //你的套件suiteKey，配置文件
+            String suiteKey = accessSuiteConfig.getSuiteKey();
+            //你的微应用appid，配置文件
+            Long microappAppId = accessSuiteConfig.getAppId();
+
             bizLogger.info(LogFormatter.getKVLogData(LogFormatter.LogEvent.START,
                     "get_user_info",
                     LogFormatter.KeyValue.getNew("code", code),

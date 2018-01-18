@@ -45,6 +45,7 @@
                 <systemPath>${project.basedir}/lib/client-sdk.api-1.0.0-SNAPSHOT.jar</systemPath>
             </dependency>
         </dependencies>
+        <!--
         <distributionManagement>
             <repository>
                 <id>releases</id>
@@ -57,4 +58,5 @@
                 <url>http://danteng.com:8081/repository/maven-snapshots/</url>
             </snapshotRepository>
         </distributionManagement>
+        -->
 </project>
