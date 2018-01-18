@@ -16,7 +16,6 @@
         <property name="httpRequestHelper" ref="httpRequestHelper"/>
     </bean>
 
-
     <bean id="corpRequestHelper" class="com.dingtalk.isv.access.biz.dingutil.CorpOapiRequestHelper">
         <property name="oapiDomain" value="${oapi.environment}" />
         <property name="httpRequestHelper" ref="httpRequestHelper"/>
