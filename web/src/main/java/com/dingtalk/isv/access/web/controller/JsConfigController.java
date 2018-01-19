@@ -54,7 +54,7 @@ public class JsConfigController {
             //你的套件suiteKey，配置文件
             String suiteKey = accessSuiteConfig.getSuiteKey();
             //你的微应用appid，配置文件
-            Long microappAppId = accessSuiteConfig.getAppId();
+            Long microappAppId = accessSuiteConfig.getAppId()[0];
 
             bizLogger.info(LogFormatter.getKVLogData(LogFormatter.LogEvent.START,
                     "get_js_config",
@@ -101,14 +101,14 @@ public class JsConfigController {
         try{
             //你的套件suiteKey，配置文件
             String suiteKey = accessSuiteConfig.getSuiteKey();
-            //你的微应用appid，配置文件
-            Long microappAppId = accessSuiteConfig.getAppId();
+//            //你的微应用appid，配置文件
+//            Long microappAppId = accessSuiteConfig.getAppId()[0];
 
             bizLogger.info(LogFormatter.getKVLogData(LogFormatter.LogEvent.START,
                     "get_user_info",
                     LogFormatter.KeyValue.getNew("code", code),
-                    LogFormatter.KeyValue.getNew("suiteKey", suiteKey),
-                    LogFormatter.KeyValue.getNew("appId", microappAppId)
+                    LogFormatter.KeyValue.getNew("suiteKey", suiteKey)
+//                    LogFormatter.KeyValue.getNew("appId", microappAppId)
             ));
             ServiceResult<LoginUserVO> userSr = empManageService.getEmpByAuthCode(suiteKey, corpId, code);
             Map<String,Object> result = new HashMap<String, Object>();

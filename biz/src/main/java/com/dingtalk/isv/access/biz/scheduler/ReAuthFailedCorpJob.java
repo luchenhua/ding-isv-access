@@ -36,18 +36,20 @@ public class ReAuthFailedCorpJob {
             //要检测套件,ISV要换成自己的SuiteKey。做成配置项
             String suiteKey = accessSuiteConfig.getSuiteKey();
             //要检测的微应用APPID。ISV要换成自己的APPID。做成配置项
-            Long appId = accessSuiteConfig.getAppId();
-            ServiceResult<SuiteTokenVO> suiteTokenSr = suiteManageService.getSuiteToken(suiteKey);
-            String suiteToken = suiteTokenSr.getResult().getSuiteToken();
-            ServiceResult<List<UnActiveCorpVO>> corpListSr = isvRequestHelper.getUnactiveCorp(suiteToken,appId);
-            List<String> corpIdList = new ArrayList<String>();
-            if(corpListSr.isSuccess() && !CollectionUtils.isEmpty(corpListSr.getResult())){
-                for(UnActiveCorpVO unActiveCorpVO:corpListSr.getResult()){
-                    corpIdList.add(unActiveCorpVO.getCorpId());
+            Long[] appIds = accessSuiteConfig.getAppId();
+            for (Long appId : appIds) {
+                ServiceResult<SuiteTokenVO> suiteTokenSr = suiteManageService.getSuiteToken(suiteKey);
+                String suiteToken = suiteTokenSr.getResult().getSuiteToken();
+                ServiceResult<List<UnActiveCorpVO>> corpListSr = isvRequestHelper.getUnactiveCorp(suiteToken,appId);
+                List<String> corpIdList = new ArrayList<String>();
+                if(corpListSr.isSuccess() && !CollectionUtils.isEmpty(corpListSr.getResult())){
+                    for(UnActiveCorpVO unActiveCorpVO:corpListSr.getResult()){
+                        corpIdList.add(unActiveCorpVO.getCorpId());
+                    }
                 }
-            }
-            if(!CollectionUtils.isEmpty(corpIdList)){
-                isvRequestHelper.reAuthCorp(suiteToken,appId,corpIdList);
+                if(!CollectionUtils.isEmpty(corpIdList)){
+                    isvRequestHelper.reAuthCorp(suiteToken,appId,corpIdList);
+                }
             }
             bizLogger.info(LogFormatter.getKVLogData(LogFormatter.LogEvent.START,
                     "任务结束。。。"

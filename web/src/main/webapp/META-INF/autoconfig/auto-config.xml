@@ -32,7 +32,8 @@
         <property name="suite.aes" defaultValue="aes_test" description="运行环境"/>
         <property name="suite.token" defaultValue="token_test" description="运行环境"/>
         <property name="suite.suiteKey" defaultValue="suite_key_test" description="运行环境"/>
-        <property name="suite.appId" defaultValue="app_id_test" description="运行环境"/>
+        <property name="suite.appId.workbench" defaultValue="app_id_workbench_test" description="运行环境"/>
+        <property name="suite.appId.contract" defaultValue="app_id_contract_test" description="运行环境"/>
     </group>
 
     <script>

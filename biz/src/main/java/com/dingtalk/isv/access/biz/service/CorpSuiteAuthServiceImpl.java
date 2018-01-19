@@ -1,6 +1,7 @@
 package com.dingtalk.isv.access.biz.service;
 
 import com.alibaba.fastjson.JSON;
+import com.dingtalk.isv.access.api.constant.AccessSystemConfig;
 import com.dingtalk.isv.access.api.enums.suite.CorpCallBackTypeEnum;
 import com.dingtalk.isv.access.api.model.CorpAppVO;
 import com.dingtalk.isv.access.api.model.CorpAuthInfoVO;
@@ -58,6 +59,8 @@ public class CorpSuiteAuthServiceImpl implements CorpSuiteAuthService {
     private ConfOapiRequestHelper confOapiRequestHelper;
     @Resource
     private CorpOapiRequestHelper corpOapiRequestHelper;
+    @Resource
+    private AccessSystemConfig accessSystemConfig;
     @Override
     public ServiceResult<CorpSuiteAuthVO> getCorpSuiteAuth(String corpId, String suiteKey) {
         bizLogger.info(LogFormatter.getKVLogData(LogFormatter.LogEvent.START,
@@ -445,7 +448,8 @@ public class CorpSuiteAuthServiceImpl implements CorpSuiteAuthService {
             //用于解密钉钉企业变更回调的EncodingAesKey。值可以自己设置,这里直接使用了套件加解密的EncodingAesKey
             String encodingAesKey = suiteSr.getResult().getEncodingAesKey();
             //用于接收钉钉企业变更回调加解密的URL地址。地址为钉钉JAVA版本DEMO的运行ECS地址。
-            String callBakUrl = "http://139.196.215.81:8080/ding-isv-access/corp/callback/"+suiteSr.getResult().getSuiteKey();
+            //TODO 变更回调地址
+            String callBakUrl = accessSystemConfig.getCorpSuiteCallBackUrl()+suiteSr.getResult().getSuiteKey();
             String corpToken = tokenSr.getResult().getCorpToken();
             //查询一下是否有当前套件注册的回调
             ServiceResult<CorpSuiteCallBackVO> callBackSr = corpOapiRequestHelper.getCorpSuiteCallback(suiteKey, corpId, corpToken);

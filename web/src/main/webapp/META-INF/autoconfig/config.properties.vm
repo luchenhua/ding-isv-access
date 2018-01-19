@@ -14,4 +14,5 @@ corp.suite.callback=${corp_suite_callback}
 suite.aes=${suite_aes}
 suite.token=${suite_token}
 suite.suiteKey=${suite_suiteKey}
-suite.appId=${suite_appId}
+suite.appId.workbench=${suite_appId_workbench}
+suite.appId.contract=${suite_appId_contract}

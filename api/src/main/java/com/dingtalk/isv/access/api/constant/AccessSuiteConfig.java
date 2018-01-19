@@ -10,5 +10,5 @@ public class AccessSuiteConfig {
     private String aes;
     private String token;
     private String suiteKey;
-    private Long appId;
+    private Long[] appId;
 }
